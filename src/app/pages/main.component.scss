@@ -1,0 +1,12 @@
+:host{
+  .column{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    .list{
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+}

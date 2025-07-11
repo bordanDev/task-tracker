@@ -1,0 +1,29 @@
+<div class="card" [formGroup]="form">
+
+  <app-switcher [listOfSwitch]="data()" (statusChange)="outdata($event)"/>
+
+  @if (!isEdit) {
+    <div class="card-title">{{ this.form.controls.title.value }}  {{ this.cardConfig()?.id }}</div>
+    <span class="card-desc">{{ this.form.controls.description.value }}</span>
+  } @else{
+    <label>
+      Title
+    </label>
+    <input [formControl]="form.controls.title">
+
+    <label>
+      Description
+    </label>
+    <textarea [formControl]="form.controls.description"></textarea>
+
+  }
+
+
+  <div class="button button-icon button-fill" (click)="isEdit = !isEdit">
+    @if (!isEdit){
+      <i-feather name="edit" ></i-feather> Edit
+    } @else {
+      <i-feather name="save" ></i-feather> Save
+    }
+  </div>
+</div>
