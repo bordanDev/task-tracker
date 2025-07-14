@@ -11,15 +11,18 @@ import { NgClass } from '@angular/common';
 })
 export class SwitcherComponent {
 
-  listOfSwitch: InputSignal<Switcher[]> = input.required()
+  label: InputSignal<string> = input.required()
+  isActive: InputSignal<boolean> = input.required();
 
-  changeStyle(item: Switcher){
-    if(!item.isActive){
-      this.listOfSwitch().map((x) => x.isActive = false)
-      item.isActive = true;
-      this.statusChange.emit(item)
-    }
-  }
+  // listOfSwitch: InputSignal<Switcher[]> = input.required()
+  //
+  // changeStyle(item: Switcher){
+  //   if(!item.isActive){
+  //     this.listOfSwitch().map((x) => x.isActive = false)
+  //     item.isActive = true;
+  //     this.statusChange.emit(item)
+  //   }
+  // }
 
   statusChange = output<Switcher>()
 

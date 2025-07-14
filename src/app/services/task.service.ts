@@ -1,24 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../tasks/interfaces/task';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Task, TaskStatus } from '../tasks/interfaces/task';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { mockTasks } from '../pages/mock.const';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class  TaskService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  private taskSubject: BehaviorSubject<FilteredTask> = new BehaviorSubject<FilteredTask>({});
-  public readonly task$: Observable<FilteredTask> = this.taskSubject.asObservable();
+  private taskSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>([]);
+  public readonly task$: Observable<Task[]> = this.taskSubject.asObservable();
 
-  private allTaskSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(mockTasks);
-  public readonly allTask$: Observable<Task[]> = this.allTaskSubject.asObservable();
+  public getTasks(): Observable<Task[]>{
+    return this.http.get<Task[]>('http://localhost:3000/tasks').pipe(
+      tap((tasks) => {
+        console.log(tasks)
+        this.taskSubject.next(tasks)
+      })
+    )
+  }
 
   // Filter task by status
-  public setTask(task: Task[]){
-    const filteredTask: FilteredTask = task.reduce((acc: Record<string, Task[]>, cur) => {
+  filterTasksByStatus(tasks: Task[]){
+
+    const filteredTask: FilteredTask = tasks.reduce((acc: Record<string, Task[]>, cur) => {
       if(!acc[cur.status]){
         acc[cur.status] = [ cur ];
       } else {
@@ -26,18 +36,8 @@ export class  TaskService {
       }
       return acc
     }, {})
-    this.taskSubject.next(filteredTask)
-  }
 
-  // Return all tasks
-  public getAllTask(): Task[] {
-    let returner!: Task[];
-    this.allTask$.subscribe((tasks) => returner = tasks)
-    return returner;
-  }
-
-  public setAllTask(tasks: Task[]) {
-    this.allTaskSubject.next(tasks);
+    return filteredTask
   }
 
 }

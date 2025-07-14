@@ -1,19 +1,18 @@
-import { Component, effect, inject, OnInit, signal, Signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { TaskComponent } from '../shared/task/task.component';
 import { IconsModule } from '../icons/icons.module';
-import { mockTasks } from './mock.const';
 import { LayoutComponent } from '../shared/layout/layout.component';
-import { FilteredTask, TaskService } from '../services/task.service';
-import { Task } from '../tasks/interfaces/task';
+import { TaskService } from '../services/task.service';
+import { StepperComponent } from '../shared/stepper/stepper.component';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
   imports: [
-    TaskComponent,
     IconsModule,
-    LayoutComponent
+    LayoutComponent,
+    StepperComponent
   ],
   standalone: true
 })
@@ -26,13 +25,15 @@ export class MainComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.taskService.task$.subscribe((x) =>  this.tasks = x)
-    this.taskService.setTask(mockTasks)
+    this.taskService.getTasks().subscribe()
+    this.taskService.task$.subscribe((x) => {
+      this.tasks = x
+    })
   }
 
   tasks!: any;
 
+  initialNumber = 0;
 
-  protected readonly mockTasks = mockTasks;
   protected readonly Object = Object;
 }

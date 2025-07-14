@@ -4,7 +4,6 @@ import { FeatherModule } from 'angular-feather';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Switcher, SwitcherComponent } from '../switcher/switcher.component';
 import { TaskService } from '../../services/task.service';
-import { mockTasks } from '../../pages/mock.const';
 
 @Component({
   selector: 'app-task',
@@ -48,15 +47,15 @@ export class TaskComponent implements OnInit{
 
   outdata(element: Switcher){
 
-    const updatedData = this.taskService.getAllTask().map((item) => {
-      if(item.id === this.cardConfig()?.id){
-        return { ...item, status: element.text as TaskStatus }
-      }
-      return item
-    })
-
-    this.taskService.setTask(updatedData)
-    this.taskService.setAllTask(updatedData)
+    // const updatedData = this.taskService.task$().map((item) => {
+    //   if(item.id === this.cardConfig()?.id){
+    //     return { ...item, status: element.text as TaskStatus }
+    //   }
+    //   return item
+    // })
+    //
+    // this.taskService.getTasks()
+    // this.taskService.setAllTask(updatedData)
 
   }
 

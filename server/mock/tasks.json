@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "First task",
+    "description": "Test description for task",
+    "status": "todo"
+  },
+  {
+    "id": 2,
+    "title": "Test",
+    "description": "Test tes test",
+    "status": "todo"
+  },
+  {
+    "id": 3,
+    "title": "Third task",
+    "description": "Important meeting preparation",
+    "status": "done"
+  },
+  {
+    "id": 4,
+    "title": "Fourth task",
+    "description": "Bug fixes for main project",
+    "status": "todo"
+  },
+  {
+    "id": 5,
+    "title": "Fifth task",
+    "description": "Code review for PR #42",
+    "status": "inprogress"
+  },
+  {
+    "id": 6,
+    "title": "Sixth task",
+    "description": "Deploy new version to production",
+    "status": "done"
+  },
+  {
+    "id": 7,
+    "title": "7 task",
+    "description": "Deploy new version to production",
+    "status": "done"
+  }
+]

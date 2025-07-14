@@ -1,5 +1,3 @@
-<ul class="switchers">
-  @for (item of listOfSwitch(); track item) {
-    <li class="switchers-item" [ngClass]="{ 'active': item.isActive }" (click)="changeStyle(item)">{{ item.text }}</li>
-  }
-</ul>
+<li class="switch-item" [ngClass]="{ 'active': isActive }" >
+  {{ label() }}
+</li>

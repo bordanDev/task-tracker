@@ -1,6 +1,6 @@
 <div class="card" [formGroup]="form">
 
-  <app-switcher [listOfSwitch]="data()" (statusChange)="outdata($event)"/>
+<!--  <app-switcher [listOfSwitch]="data()" (statusChange)="outdata($event)"/>-->
 
   @if (!isEdit) {
     <div class="card-title">{{ this.form.controls.title.value }}  {{ this.cardConfig()?.id }}</div>

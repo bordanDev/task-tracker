@@ -2,34 +2,36 @@
 
 <app-layout class="column">
 
-  <app-layout>
-    <h2>Todo</h2>
-    <div class="list">
-      @for (card of tasks['todo']; track card.id){
-        <app-task [cardConfig]="card"/>
-      }
-    </div>
+<!--  <app-layout>-->
+<!--    <h2>Todo</h2>-->
+<!--    <div class="list">-->
+<!--      @for (card of tasks['todo']; track card.id){-->
+<!--        <app-task [cardConfig]="card"/>-->
+<!--      }-->
+<!--    </div>-->
 
-  </app-layout>
+<!--  </app-layout>-->
 
-  <app-layout>
-    <h2>In Progress</h2>
-    <div class="list">
-      @for (card of tasks['inprogress'];; track card.id){
-        <app-task [cardConfig]="card"/>
-      }
-    </div>
+<!--  <app-layout>-->
+<!--    <h2>In Progress</h2>-->
+<!--    <div class="list">-->
+<!--      @for (card of tasks['inprogress'];; track card.id){-->
+<!--        <app-task [cardConfig]="card"/>-->
+<!--      }-->
+<!--    </div>-->
 
-  </app-layout>
+<!--  </app-layout>-->
 
-  <app-layout>
-    <h2>Done</h2>
-    <div class="list">
-      @for (card of tasks['done']; track card.id){
-        <app-task [cardConfig]="card"/>
-      }
-    </div>
+<!--  <app-layout>-->
+<!--    <h2>Done</h2>-->
+<!--    <div class="list">-->
+<!--      @for (card of tasks['done']; track card.id){-->
+<!--        <app-task [cardConfig]="card"/>-->
+<!--      }-->
+<!--    </div>-->
 
-  </app-layout>
+<!--  </app-layout>-->
+
+  <app-stepper [(count)]="initialNumber"/>
 
 </app-layout>
